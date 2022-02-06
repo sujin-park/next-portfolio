@@ -1,27 +1,26 @@
 import React from 'react';
 import Error from 'next/error';
-import fetch from 'isomorphic-fetch';
+import axios from 'axios';
 
 class Index extends React.Component {
   static async getInitialProps() {
     let stories;
     try {
-      const response = await fetch('https://node-hnapi.herokuapp.com/news?page=1');
-      stories = await response.json();
-
-      console.log(response);
+      const res = await axios.get('https://node-hnapi.herokuapp.com/news?page=1');
+      stories = await res.data;
     } catch (err) {
       console.log(err);
       stories = [];
     }
 
-    return { stories }
+    return { stories };
   }
 
   render() {
     const { stories } = this.props;
 
     if (stories.length === 0) {
+      console.log(stories);
       return <Error statusCode={503} />;
     }
 
