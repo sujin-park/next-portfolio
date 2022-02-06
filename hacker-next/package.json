@@ -1,0 +1,17 @@
+{
+  "name": "hacker-next",
+  "version": "1.0.0",
+  "description": "A Hacker News clone made with Next.js",
+  "main": "server.js",
+  "scripts": {
+    "dev": "next"
+  },
+  "author": "sujin-park",
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-fetch": "^3.0.0",
+    "next": "^12.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
