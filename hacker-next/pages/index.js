@@ -1,6 +1,7 @@
 import React from 'react';
 import Error from 'next/error';
 import axios from 'axios';
+import StoryList from '../components/StoryList';
 
 class Index extends React.Component {
   static async getInitialProps() {
@@ -27,11 +28,7 @@ class Index extends React.Component {
     return (
       <>
         <h1>hacker next</h1>
-        <div>{stories.map(story => (
-            <h2 key={story.id}>{story.title}</h2>
-          
-          )
-        )}</div>
+        <StoryList stories={stories} />
       </>
     )
   }
