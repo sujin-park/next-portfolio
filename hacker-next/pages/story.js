@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Error from 'next/error';
 import Layout from '../components/Layout';
+import CommentList from '../components/CommentList';
 
 const Story = ({ story }) => {
 
@@ -19,20 +20,31 @@ const Story = ({ story }) => {
           <strong>{story.comments_count}</strong>
           <strong>{story.time_ago}</strong>
         </div>
-      </main> 
+
+        {/* {story.comments.length > 0 ? (
+          <CommentList comments={story.comments}/>
+        ) : (
+          <div>No comments for this story</div>
+        )} */}
+      </main>
     </Layout>
   )
 }
 
-Story.getInitialProps = ({ req, res, query }) => {
+Story.getInitialProps = async ({ req, res, query }) => {
   let story;
   
   try {
     const storyId = query.id;
-    const response = await axios.get(`https://node-hnapi.herokuap.com/item/${storyId}`)
-    story = await res.data;
+    const { data } = await axios.get(`https://node-hnapi.herokuap.com/item/${storyId}`)
+
+    story = data;
   } catch (err) {
-    console.log(err);
     story = null;
+    console.log(err);
   }
+
+  return { story };
 };
+
+export default Story;

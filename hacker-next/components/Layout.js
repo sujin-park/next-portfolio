@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Layout = ({ children, title, description }) => (
   <div>
@@ -44,9 +45,12 @@ const Layout = ({ children, title, description }) => (
       }
     `}
     </style>
-    <style global jsx>{`
-      background: white;
-      font-family: Verdana, Geneva, sans-serif;
+
+    <style jsx global>{`
+      body {
+        background: white;
+        font-family: Verdana, Geneva, sans-serif;
+      }
     `}
     </style>
   </div>
